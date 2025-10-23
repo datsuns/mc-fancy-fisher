@@ -1,16 +1,16 @@
 package my.datsuns.fancyfisher;
 
 /**
- * Shared entrypoint for Fancy Fisher mod logic.
+ * Shared entry point for Fancy Fisher logic.
  */
 public final class FancyFisher {
-    public static final String MOD_ID = "fancyfisher";
+	public static final String MOD_ID = "fancyfisher";
 
-    private FancyFisher() {
-    }
+	private FancyFisher() {
+		// no instances
+	}
 
-    public static void init() {
-        // Placeholder for shared initialization and registry setup.
-        System.out.println("[Fancy Fisher] Common initialization");
-    }
+	public static void init() {
+		// Loader-agnostic bootstrap will live here.
+	}
 }
