@@ -12,7 +12,7 @@
 - Root Gradle project manages version catalogs, shared repositories, and aggregates `:fabric` and `:neoforge` jar outputs.
 
 ## Build & Run
-- Use Gradle wrapper (`./gradlew`) with `GRADLE_USER_HOME=./gradle_home` when running inside sandboxed environments.
+- Use Gradle wrapper (`./gradlew`) with `GRADLE_USER_HOME=../gradle_home` when running inside sandboxed environments.
 - Primary tasks:
   - `./gradlew :fabric:build` — produces Fabric-ready jar under `fabric/build/libs`.
   - `./gradlew :neoforge:build` — produces NeoForge-ready jar under `neoforge/build/libs`.

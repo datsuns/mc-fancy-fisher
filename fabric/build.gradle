@@ -37,6 +37,7 @@ tasks.processResources {
 				"modId": mod_id,
 				"modName": mod_name,
 				"version": project.version,
+				"modIcon": "assets/fancyfisher/icon.png",
 				"loader_version": loader_version,
 				"minecraft_version": minecraft_version
 		)

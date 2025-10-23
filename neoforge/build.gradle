@@ -14,6 +14,8 @@ dependencies {
 	implementation project(":common")
 }
 
+def loaderVersionRange = project.findProperty("javafml_version_range") ?: "[10,)"
+
 neoForge {
 	version = neo_version
 
@@ -40,10 +42,12 @@ def modMetadata = tasks.register("generateModMetadata", ProcessResources) {
 			minecraft_version      : minecraft_version,
 			minecraft_version_range: minecraft_version_range ?: "[${minecraft_version}]",
 			neo_version            : neo_version,
+			loader_version_range   : loaderVersionRange,
 			mod_id                 : mod_id,
 			mod_name               : mod_name,
 			mod_license            : "All Rights Reserved",
 			mod_version            : project.version,
+			mod_logo               : "assets/fancyfisher/icon.png",
 			mod_authors            : "Fancy Fisher Team",
 			mod_description        : "Adds fancy fishing utilities."
 	]

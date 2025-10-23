@@ -3,6 +3,7 @@
   "id": "${modId}",
   "version": "${version}",
   "name": "${modName}",
+  "icon": "${modIcon}",
   "description": "Adds fancy fishing utilities.",
   "authors": [
     "Fancy Fisher Team"
