@@ -4,6 +4,12 @@ plugins {
 	id "maven-publish"
 }
 
+base {
+	archivesName = "fancy-fisher-neoforge"
+}
+
+def releaseVersion = "${project.version}-mc${minecraft_version}"
+
 dependencies {
 	implementation project(":common")
 }
@@ -56,4 +62,13 @@ tasks.named("processResources") {
 
 tasks.named("jar") {
 	from(project(":common").sourceSets.main.output)
+	archiveBaseName.set(base.archivesName)
+	archiveVersion.set(releaseVersion)
+	archiveFileName.set("${base.archivesName.get()}-${releaseVersion}.jar")
+}
+
+tasks.named("sourcesJar") {
+	archiveBaseName.set(base.archivesName)
+	archiveVersion.set(releaseVersion)
+	archiveFileName.set("${base.archivesName.get()}-${releaseVersion}-sources.jar")
 }
