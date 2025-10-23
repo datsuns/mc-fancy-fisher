@@ -1,0 +1,59 @@
+plugins {
+	id "java-library"
+	id "net.neoforged.moddev"
+	id "maven-publish"
+}
+
+dependencies {
+	implementation project(":common")
+}
+
+neoForge {
+	version = neo_version
+
+	parchment {
+		mappingsVersion = parchment_mappings_version
+		minecraftVersion = parchment_minecraft_version
+	}
+
+	runs {
+		client {
+			client()
+		}
+		server {
+			server()
+		}
+		data {
+			data()
+		}
+	}
+}
+
+def modMetadata = tasks.register("generateModMetadata", ProcessResources) {
+	var replaceProperties = [
+			minecraft_version      : minecraft_version,
+			minecraft_version_range: minecraft_version_range ?: "[${minecraft_version}]",
+			neo_version            : neo_version,
+			mod_id                 : mod_id,
+			mod_name               : mod_name,
+			mod_license            : "All Rights Reserved",
+			mod_version            : project.version,
+			mod_authors            : "Fancy Fisher Team",
+			mod_description        : "Adds fancy fishing utilities."
+	]
+	inputs.properties replaceProperties
+	expand replaceProperties
+	from "src/main/templates"
+	into layout.buildDirectory.dir("generated/sources/modMetadata")
+}
+
+sourceSets.main.resources.srcDir(modMetadata)
+neoForge.ideSyncTask modMetadata
+
+tasks.named("processResources") {
+	dependsOn(modMetadata)
+}
+
+tasks.named("jar") {
+	from(project(":common").sourceSets.main.output)
+}

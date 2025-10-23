@@ -1,0 +1,22 @@
+pluginManagement {
+	repositories {
+		maven {
+			name = "Fabric"
+			url = "https://maven.fabricmc.net/"
+		}
+		maven {
+			name = "NeoForged"
+			url = "https://maven.neoforged.net/releases"
+		}
+		gradlePluginPortal()
+		mavenCentral()
+	}
+	plugins {
+		id("fabric-loom") version "1.11-SNAPSHOT"
+		id("net.neoforged.moddev") version "2.0.115"
+	}
+}
+
+rootProject.name = "fancy-fisher"
+
+include("common", "fabric", "neoforge")

@@ -1,0 +1,7 @@
+plugins {
+	id "java-library"
+}
+
+dependencies {
+	// Common code remains loader-agnostic; add shared libraries here when needed.
+}

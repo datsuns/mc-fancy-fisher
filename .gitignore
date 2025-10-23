@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+*/build/
+**/build/
+!.github/
+
+# Eclipse/IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# OS artifacts
+.DS_Store
+Thumbs.db

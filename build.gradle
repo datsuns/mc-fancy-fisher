@@ -1,0 +1,26 @@
+plugins {
+	id "maven-publish"
+}
+
+def modGroup = project.findProperty("mod_group") ?: "my.datsuns.fancyfisher"
+def modVersion = project.findProperty("mod_version") ?: "1.0.0"
+
+allprojects {
+	group = modGroup
+	version = modVersion
+}
+
+subprojects {
+	apply plugin: "java"
+
+	java {
+		withSourcesJar()
+		sourceCompatibility = JavaVersion.VERSION_21
+		targetCompatibility = JavaVersion.VERSION_21
+	}
+
+	tasks.withType(JavaCompile).configureEach {
+		it.options.encoding = "UTF-8"
+		it.options.release = 21
+	}
+}
