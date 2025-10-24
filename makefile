@@ -22,9 +22,11 @@ build_neoforge:
 	GRADLE_USER_HOME=../gradle_home ./gradlew :neoforge:build
 
 run_fabric:
+	cp ./fabric/build/libs/fancy-fisher-fabric-1.0.0-mc1.21.10.jar ./fabric/run/mods/
 	GRADLE_USER_HOME=../gradle_home ./gradlew :fabric:runClient
 
 run_neoforge:
+	cp ./neoforge/build/libs/fancy-fisher-neoforge-1.0.0-mc1.21.10.jar ./neoforge/run/mods/
 	GRADLE_USER_HOME=../gradle_home ./gradlew :neoforge:runClient
 
 .PHONY: default b bf bn rf rn
