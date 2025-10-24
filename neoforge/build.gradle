@@ -9,6 +9,9 @@ base {
 }
 
 def releaseVersion = "${project.version}-mc${minecraft_version}"
+def modDescription = project.findProperty("mod_description") ?: "Adds fancy fishing utilities."
+def modLicense = project.findProperty("mod_license") ?: "All Rights Reserved"
+def modAuthors = project.findProperty("mod_authors") ?: "Fancy Fisher Team"
 
 dependencies {
 	implementation project(":common")
@@ -45,11 +48,11 @@ def modMetadata = tasks.register("generateModMetadata", ProcessResources) {
 			loader_version_range   : loaderVersionRange,
 			mod_id                 : mod_id,
 			mod_name               : mod_name,
-			mod_license            : "All Rights Reserved",
+			mod_license            : modLicense,
 			mod_version            : project.version,
 			mod_logo               : "assets/fancyfisher/icon.png",
-			mod_authors            : "Fancy Fisher Team",
-			mod_description        : "Adds fancy fishing utilities."
+			mod_authors            : modAuthors,
+			mod_description        : modDescription
 	]
 	inputs.properties replaceProperties
 	expand replaceProperties

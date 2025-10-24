@@ -8,6 +8,11 @@ base {
 }
 
 def releaseVersion = "${project.version}-mc${minecraft_version}"
+def modDescription = project.findProperty("mod_description") ?: "Adds fancy fishing utilities."
+def modLicense = project.findProperty("mod_license") ?: "All Rights Reserved"
+def rawAuthors = project.findProperty("mod_authors") ?: "Fancy Fisher Team"
+def modAuthorsList = rawAuthors.split("\\s*;\\s*").collect { it.trim() }.findAll { !it.isEmpty() }
+def modAuthorsInline = modAuthorsList.collect { it.replace("\"", "\\\\\"") }.join('","')
 
 dependencies {
 	minecraft "com.mojang:minecraft:${minecraft_version}"
@@ -32,6 +37,9 @@ loom {
 
 tasks.processResources {
 	inputs.property "version", project.version
+	inputs.property "description", modDescription
+	inputs.property "license", modLicense
+	inputs.property "authorsInline", modAuthorsInline
 	filesMatching("fabric.mod.json") {
 		expand(
 				"modId": mod_id,
@@ -39,7 +47,10 @@ tasks.processResources {
 				"version": project.version,
 				"modIcon": "assets/fancyfisher/icon.png",
 				"loader_version": loader_version,
-				"minecraft_version": minecraft_version
+				"minecraft_version": minecraft_version,
+				"modDescription": modDescription,
+				"modLicense": modLicense,
+				"modAuthorsInline": modAuthorsInline
 		)
 	}
 }

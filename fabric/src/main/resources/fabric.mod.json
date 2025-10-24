@@ -4,11 +4,9 @@
   "version": "${version}",
   "name": "${modName}",
   "icon": "${modIcon}",
-  "description": "Adds fancy fishing utilities.",
-  "authors": [
-    "Fancy Fisher Team"
-  ],
-  "license": "All Rights Reserved",
+  "description": "${modDescription}",
+  "authors": ["${modAuthorsInline}"],
+  "license": "${modLicense}",
   "environment": "*",
   "entrypoints": {
     "main": [
